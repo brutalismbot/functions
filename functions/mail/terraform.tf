@@ -48,7 +48,7 @@ data "aws_iam_policy_document" "access" {
   statement {
     sid       = "S3"
     actions   = ["s3:GetObject"]
-    resources = ["arn:aws:s3:::brutalismbot-mail/*"]
+    resources = ["arn:aws:s3:::brutalismbot-*-mail/*"]
   }
 
   statement {

@@ -95,28 +95,98 @@ module "twitter_transform" { source = "./functions/twitter-transform" }
 
 output "functions" {
   value = {
-    api_slack         = { arn = module.api_slack.lambda_function.arn }
-    api_slack_beta    = { arn = module.api_slack_beta.lambda_function.arn }
-    array             = { arn = module.array.lambda_function.arn }
-    http              = { arn = module.http.lambda_function.arn }
-    mail              = { arn = module.mail.lambda_function.arn }
-    reddit_dequeue    = { arn = module.reddit_dequeue.lambda_function.arn }
-    slack_transform   = { arn = module.slack_transform.lambda_function.arn }
-    twitter_post      = { arn = module.twitter_post.lambda_function.arn }
-    twitter_transform = { arn = module.twitter_transform.lambda_function.arn }
+    api_slack = {
+      arn           = module.api_slack.lambda_function.arn
+      function_name = module.api_slack.lambda_function.function_name
+    }
+
+    api_slack_beta = {
+      arn           = module.api_slack_beta.lambda_function.arn
+      function_name = module.api_slack_beta.lambda_function.function_name
+    }
+
+    array = {
+      arn           = module.array.lambda_function.arn
+      function_name = module.array.lambda_function.function_name
+    }
+
+    http = {
+      arn           = module.http.lambda_function.arn
+      function_name = module.http.lambda_function.function_name
+    }
+
+    mail = {
+      arn           = module.mail.lambda_function.arn
+      function_name = module.mail.lambda_function.function_name
+    }
+
+    reddit_dequeue = {
+      arn           = module.reddit_dequeue.lambda_function.arn
+      function_name = module.reddit_dequeue.lambda_function.function_name
+    }
+
+    slack_transform = {
+      arn           = module.slack_transform.lambda_function.arn
+      function_name = module.slack_transform.lambda_function.function_name
+    }
+
+    twitter_post = {
+      arn           = module.twitter_post.lambda_function.arn
+      function_name = module.twitter_post.lambda_function.function_name
+    }
+
+    twitter_transform = {
+      arn           = module.twitter_transform.lambda_function.arn
+      function_name = module.twitter_transform.lambda_function.function_name
+    }
   }
 }
 
 output "roles" {
   value = {
-    api_slack         = { arn = module.api_slack.iam_role.arn }
-    api_slack_beta    = { arn = module.api_slack_beta.iam_role.arn }
-    array             = { arn = module.array.iam_role.arn }
-    http              = { arn = module.http.iam_role.arn }
-    mail              = { arn = module.mail.iam_role.arn }
-    reddit_dequeue    = { arn = module.reddit_dequeue.iam_role.arn }
-    slack_transform   = { arn = module.slack_transform.iam_role.arn }
-    twitter_post      = { arn = module.twitter_post.iam_role.arn }
-    twitter_transform = { arn = module.twitter_transform.iam_role.arn }
+    api_slack = {
+      arn  = module.api_slack.iam_role.arn
+      name = module.api_slack.iam_role.name
+    }
+
+    api_slack_beta = {
+      arn  = module.api_slack_beta.iam_role.arn
+      name = module.api_slack_beta.iam_role.name
+    }
+
+    array = {
+      arn  = module.array.iam_role.arn
+      name = module.array.iam_role.name
+    }
+
+    http = {
+      arn  = module.http.iam_role.arn
+      name = module.http.iam_role.name
+    }
+
+    mail = {
+      arn  = module.mail.iam_role.arn
+      name = module.mail.iam_role.name
+    }
+
+    reddit_dequeue = {
+      arn  = module.reddit_dequeue.iam_role.arn
+      name = module.reddit_dequeue.iam_role.name
+    }
+
+    slack_transform = {
+      arn  = module.slack_transform.iam_role.arn
+      name = module.slack_transform.iam_role.name
+    }
+
+    twitter_post = {
+      arn  = module.twitter_post.iam_role.arn
+      name = module.twitter_post.iam_role.name
+    }
+
+    twitter_transform = {
+      arn  = module.twitter_transform.iam_role.arn
+      name = module.twitter_transform.iam_role.name
+    }
   }
 }

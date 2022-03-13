@@ -8,12 +8,13 @@ apply: .terraform $(VENDOR_DIRS)
 	terraform apply
 
 clean:
-	rm -rf .terraform*
+	rm -rf .terraform
 
-.PHONY: build clean plan apply
+.PHONY: plan apply clean
 
-.terraform .terraform.lock.hcl: *.tf
+.terraform .terraform.lock.hcl:
 	terraform init
+	touch $@
 
 functions/%/lib/vendor: functions/%/lib/Gemfile
 	cd $$(dirname $@) ; bundle
