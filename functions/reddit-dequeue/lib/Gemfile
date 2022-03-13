@@ -1,0 +1,7 @@
+source 'https://rubygems.org/'
+
+gem 'yake', '~> 0.5'
+
+group :development do
+  gem 'aws-sdk-dynamodb', '~> 1.0'
+end
