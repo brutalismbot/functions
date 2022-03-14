@@ -1,10 +1,10 @@
 FUNCTIONS   := $(shell command ls functions)
 VENDOR_DIRS := $(foreach FUNCTION,$(FUNCTIONS),functions/$(FUNCTION)/lib/vendor)
 
-plan: .terraform $(VENDOR_DIRS)
+plan: $(VENDOR_DIRS) | .terraform
 	terraform plan
 
-apply: .terraform $(VENDOR_DIRS)
+apply: $(VENDOR_DIRS) | .terraform
 	terraform apply
 
 clean:
