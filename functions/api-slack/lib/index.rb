@@ -31,18 +31,6 @@ post '/health' do
   respond 200, { ok: true }.to_json
 end
 
-post '/callbacks' do |event|
-  SLACK.verify event
-  event['body'] = event['body'].then do |body|
-    payload    = body.to_h_from_form['payload'].to_h_from_json
-    action_id  = -> (action) { action['action_id'] }
-    action_ids = payload['actions'].map(&action_id)
-    payload.update('action_ids' => action_ids).to_json
-  end
-  SLACK.publish event
-  respond 200
-end
-
 post '/events' do |event|
   SLACK.verify event
   SLACK.publish event
