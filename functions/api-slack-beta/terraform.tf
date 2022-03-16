@@ -84,7 +84,7 @@ resource "aws_lambda_function" "function" {
   environment {
     variables = {
       EVENT_BUS    = "brutalismbot"
-      EVENT_SOURCE = "slack"
+      EVENT_SOURCE = "slack/beta"
       SECRET_ID    = data.aws_secretsmanager_secret.secret.name
     }
   }
