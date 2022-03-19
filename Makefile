@@ -1,20 +1,19 @@
 FUNCTIONS   := $(shell command ls functions)
 VENDOR_DIRS := $(foreach FUNCTION,$(FUNCTIONS),functions/$(FUNCTION)/lib/vendor)
 
-plan: $(VENDOR_DIRS) | .terraform
+init: $(VENDOR_DIRS)
+	terraform init
+
+plan:
 	terraform plan
 
-apply: $(VENDOR_DIRS) | .terraform
+apply:
 	terraform apply
 
 clean:
 	rm -rf .terraform
 
-.PHONY: plan apply clean
-
-.terraform .terraform.lock.hcl:
-	terraform init
-	touch $@
+.PHONY: init plan apply clean
 
 functions/%/lib/vendor: functions/%/lib/Gemfile
 	cd $$(dirname $@) ; bundle
