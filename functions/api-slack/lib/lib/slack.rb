@@ -14,12 +14,6 @@ module Slack
     EVENT_BUS_NAME = ENV['EVENT_BUS']
     EVENT_SOURCE   = ENV['EVENT_SOURCE']
     SECRET_ID      = ENV['SECRET_ID'] || 'brutalismbot'
-    DETAIL_TYPES = {
-      'GET /oauth/v2'     => 'oauth',
-      'POST /callbacks'   => 'callback',
-      'POST /events'      => 'event',
-      'POST /slash/{cmd}' => 'slash',
-    }
 
     def initialize(event_bus_name:nil, source:nil)
       @event_bus_name = event_bus_name || EVENT_BUS_NAME
@@ -146,7 +140,7 @@ module Slack
 
     def publish(event)
       detail       = event['body']
-      detail_type  = DETAIL_TYPES[event['routeKey']] || '<unknown>'
+      detail_type  = event['routeKey']
       trace_header = event.dig('headers', 'x-amzn-trace-id')
 
       # Construct entry
