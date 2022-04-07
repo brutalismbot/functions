@@ -81,6 +81,8 @@ module "mail" {
   MAIL_TO = var.MAIL_TO
 }
 
+module "slack_link_unfurl" { source = "./functions/slack-link-unfurl" }
+
 module "slack_transform" { source = "./functions/slack-transform" }
 
 module "reddit_dequeue" { source = "./functions/reddit-dequeue" }
@@ -123,6 +125,11 @@ output "functions" {
     reddit_dequeue = {
       arn           = module.reddit_dequeue.lambda_function.arn
       function_name = module.reddit_dequeue.lambda_function.function_name
+    }
+
+    slack_link_unfurl = {
+      arn           = module.slack_link_unfurl.lambda_function.arn
+      function_name = module.slack_link_unfurl.lambda_function.function_name
     }
 
     slack_transform = {
@@ -172,6 +179,11 @@ output "roles" {
     reddit_dequeue = {
       arn  = module.reddit_dequeue.iam_role.arn
       name = module.reddit_dequeue.iam_role.name
+    }
+
+    slack_link_unfurl = {
+      arn  = module.slack_link_unfurl.iam_role.arn
+      name = module.slack_link_unfurl.iam_role.name
     }
 
     slack_transform = {

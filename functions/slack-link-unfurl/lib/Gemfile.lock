@@ -1,0 +1,14 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    yake (0.5.2)
+
+PLATFORMS
+  ruby
+  x86_64-darwin-20
+
+DEPENDENCIES
+  yake (~> 0.5)
+
+BUNDLED WITH
+   2.3.7
